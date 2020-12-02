@@ -3,7 +3,7 @@ from os.path import dirname
 
 def calculate_expense_report():
     with open(f'{dirname(__file__)}/data.txt', 'r') as file:
-        lines = file.readlines()[:-1]
+        lines = file.readlines()
         for (index_1, line_1) in enumerate(lines):
             line_1 = int(line_1)
             for (index_2, line_2) in enumerate(lines):

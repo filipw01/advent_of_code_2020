@@ -27,7 +27,7 @@ pub fn check_password() -> Result<usize, &'static str> {
     }).filter(|policy| {
         let letter_count = policy.password.chars().enumerate()
             .filter(|(index, _)| *index == policy.first_index || *index == policy.last_index)
-            .filter(|(index, char)| *char == policy.letter)
+            .filter(|(_, char)| *char == policy.letter)
             .count();
         letter_count == 1
     }).map(|policy| {

@@ -6,7 +6,11 @@ pub fn calculate_encounters(right_move: usize, down_move: usize) -> Result<usize
     lines.pop();
     let mut x = 0;
     let mut trees = 0;
-    for (_, line) in lines.iter().enumerate().filter(|(index, _)| index % down_move == 0) {
+    for (_, line) in lines
+        .iter()
+        .enumerate()
+        .filter(|(index, _)| index % down_move == 0)
+    {
         let index = x % line.len();
         let cell = line.chars().nth(index).unwrap();
         if cell == '#' {
@@ -18,7 +22,10 @@ pub fn calculate_encounters(right_move: usize, down_move: usize) -> Result<usize
 }
 
 pub fn calculate_solution() -> Result<usize, &'static str> {
-    let solution = [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)].iter()
-        .fold(1, |acc, (right, down)| acc * calculate_encounters(*right, *down).unwrap());
+    let solution = [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]
+        .iter()
+        .fold(1, |acc, (right, down)| {
+            acc * calculate_encounters(*right, *down).unwrap()
+        });
     return Ok(solution);
 }

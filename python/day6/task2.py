@@ -1,10 +1,20 @@
 from os.path import dirname
 
 
-def run():
+def count_declarations():
     with open(f'{dirname(__file__)}/data.txt', 'r') as file:
-        lines = file.readlines()
+        declaration_batches = file.read().split('\n\n')
+        total = 0
+        for declaration_batch in declaration_batches:
+            declared = set(declaration_batch.split('\n')[0])
+            for declaration in declaration_batch.split('\n'):
+                if declaration == '':
+                    continue
+                declared = declared & set(declaration)
+                print(repr(declared))
+            total += len(declared)
+        return total
 
 
 if __name__ == '__main__':
-    print(run())
+    print(count_declarations())

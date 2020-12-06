@@ -11,7 +11,6 @@ def count_declarations():
                 if declaration == '':
                     continue
                 declared = declared & set(declaration)
-                print(repr(declared))
             total += len(declared)
         return total
 

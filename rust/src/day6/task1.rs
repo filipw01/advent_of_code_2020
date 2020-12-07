@@ -1,5 +1,5 @@
-use std::fs::read_to_string;
 use std::collections::HashSet;
+use std::fs::read_to_string;
 
 pub fn count_declarations() -> usize {
     let file_content = read_to_string("day6/data.txt").unwrap();

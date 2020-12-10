@@ -1,7 +1,7 @@
 from os.path import dirname
 
 
-def run():
+def calculate_adapters():
     with open(f'{dirname(__file__)}/data.txt', 'r') as file:
         adapters = set(map(int, file.read().split('\n')[:-1]))
         current_adapter = 0
@@ -21,4 +21,4 @@ def run():
 
 
 if __name__ == '__main__':
-    print(run())
+    print(calculate_adapters())

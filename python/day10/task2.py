@@ -2,7 +2,7 @@ from collections import defaultdict
 from os.path import dirname
 
 
-def run():
+def find_valid_combinations():
     with open(f'{dirname(__file__)}/data.txt', 'r') as file:
         adapters = sorted(map(int, file.read().split('\n')[:-1]))
         max_adapter = max(adapters)
@@ -18,4 +18,4 @@ def run():
 
 
 if __name__ == '__main__':
-    print(run())
+    print(find_valid_combinations())

@@ -76,7 +76,7 @@ impl Board {
     }
 }
 
-pub fn run() -> usize {
+pub fn find_occupied_seats() -> usize {
     let file_content = read_to_string("day11/data.txt").unwrap();
     let mut lines: Vec<_> = file_content.split("\n").collect();
     lines.pop();

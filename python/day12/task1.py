@@ -23,17 +23,13 @@ def find_way():
             elif instruction == "R":
                 rotation += value
             elif instruction == "F":
-                while rotation < 0:
-                    rotation += 360
-                while rotation >= 360:
-                    rotation -= 360
-                if rotation == 0:
+                if rotation % 360 == 0:
                     y += value
-                elif rotation == 90:
+                elif rotation % 360 == 90:
                     x += value
-                elif rotation == 180:
+                elif rotation % 360 == 180:
                     y -= value
-                elif rotation == 270:
+                elif rotation % 360 == 270:
                     x -= value
         return abs(x) + abs(y)
 

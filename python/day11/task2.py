@@ -1,7 +1,7 @@
 from os.path import dirname
 
 
-def run():
+def find_occupied_seats():
     with open(f'{dirname(__file__)}/data.txt', 'r') as file:
         lines = file.read().split('\n')[:-1]
         board = Board(list(map(list, lines)))
@@ -66,4 +66,4 @@ class Board:
 
 
 if __name__ == '__main__':
-    print(run())
+    print(find_occupied_seats())

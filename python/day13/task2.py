@@ -9,8 +9,11 @@ def run():
         for (delay, bus) in enumerate(data):
             if bus == 'x':
                 continue
-            busses.append([int(bus), int(bus) - delay])
-        sorted(busses, key=lambda x: x[0], reverse=True)
+            if delay % int(bus) == 0:
+                busses.append([int(bus), 0])
+            else:
+                busses.append([int(bus), int(bus) - (delay % int(bus))])
+        busses = sorted(busses, key=lambda x: x[0], reverse=True)
         index = 1
         multiplier = busses[0][0]
         prev = busses[0][1]

@@ -13,7 +13,6 @@ def emulate():
             if operation[:3] == 'mem':
                 address = operation[4:-1]
                 memory[address] = apply_mask(value, mask)
-                print(f"mem[{address}] = mask_from {value} and {mask} = {apply_mask(value, mask)}")
         return sum(memory.values())
 
 

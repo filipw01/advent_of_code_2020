@@ -1,5 +1,5 @@
-use std::fs::read_to_string;
 use std::collections::HashSet;
+use std::fs::read_to_string;
 
 pub fn calculate_adapters() -> usize {
     let file_content = read_to_string("day10/data.txt").unwrap();
@@ -20,7 +20,7 @@ pub fn calculate_adapters() -> usize {
                 diff_3 += 1;
                 current_adapter += 3;
             }
-            _ => return diff_1 * diff_3
+            _ => return diff_1 * diff_3,
         }
     }
 }

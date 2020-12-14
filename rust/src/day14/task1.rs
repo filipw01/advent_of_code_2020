@@ -1,5 +1,5 @@
-use std::fs::read_to_string;
 use std::collections::HashMap;
+use std::fs::read_to_string;
 
 pub fn emulate() -> usize {
     let file_content = read_to_string("day14/data.txt").unwrap();
@@ -14,7 +14,11 @@ pub fn emulate() -> usize {
             mask = value;
         }
         if operation.starts_with("mem") {
-            let address = operation.get(4..operation.len() - 1).unwrap().parse().unwrap();
+            let address = operation
+                .get(4..operation.len() - 1)
+                .unwrap()
+                .parse()
+                .unwrap();
             let value = apply_mask(value, mask);
             memory.insert(address, value);
         }
@@ -23,7 +27,10 @@ pub fn emulate() -> usize {
 }
 
 fn apply_mask(value: &str, mask: &str) -> usize {
-    let value = format!("{:b}", value.parse::<usize>().unwrap()).chars().rev().collect::<String>();
+    let value = format!("{:b}", value.parse::<usize>().unwrap())
+        .chars()
+        .rev()
+        .collect::<String>();
     let mask = mask.chars().rev().collect::<String>();
     let mut output_number = "".to_string();
     for index in 0..mask.len() {

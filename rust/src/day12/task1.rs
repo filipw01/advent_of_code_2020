@@ -17,15 +17,13 @@ pub fn find_way() -> usize {
             'W' => x -= value,
             'L' => rotation -= value,
             'R' => rotation += value,
-            'F' => {
-                match ((rotation % 360) + 360) % 360 {
-                    0 => y += value,
-                    90 => x += value,
-                    180 => y -= value,
-                    270 => x -= value,
-                    _ => unreachable!(),
-                }
-            }
+            'F' => match ((rotation % 360) + 360) % 360 {
+                0 => y += value,
+                90 => x += value,
+                180 => y -= value,
+                270 => x -= value,
+                _ => unreachable!(),
+            },
             _ => unreachable!(),
         }
     }

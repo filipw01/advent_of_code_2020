@@ -1,5 +1,5 @@
-use std::fs::read_to_string;
 use std::collections::HashMap;
+use std::fs::read_to_string;
 
 pub fn emulate() -> usize {
     let file_content = read_to_string("day14/data.txt").unwrap();
@@ -14,7 +14,11 @@ pub fn emulate() -> usize {
             mask = value;
         }
         if operation.starts_with("mem") {
-            let address = operation.get(4..operation.len() - 1).unwrap().parse().unwrap();
+            let address = operation
+                .get(4..operation.len() - 1)
+                .unwrap()
+                .parse()
+                .unwrap();
             let possible_addresses = calculate_addresses(address, mask);
             for masked_address in possible_addresses {
                 memory.insert(masked_address, value.parse().unwrap());
@@ -52,7 +56,14 @@ fn calculate_addresses<'a>(address: usize, mask: &'a str) -> Vec<String> {
         if isize::from_str_radix(values_to_insert.as_str(), 2).unwrap() == 0 {
             return possible_address;
         }
-        let temp_mask_replacement = isize::from_str_radix(values_to_insert.as_str(), 2).unwrap() as usize;
-        values_to_insert = format!("{:0width$}", format!("{:b}", (temp_mask_replacement - 1)).parse::<usize>().unwrap(), width = x_count);
+        let temp_mask_replacement =
+            isize::from_str_radix(values_to_insert.as_str(), 2).unwrap() as usize;
+        values_to_insert = format!(
+            "{:0width$}",
+            format!("{:b}", (temp_mask_replacement - 1))
+                .parse::<usize>()
+                .unwrap(),
+            width = x_count
+        );
     }
 }

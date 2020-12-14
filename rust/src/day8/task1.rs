@@ -1,5 +1,5 @@
-use std::fs::read_to_string;
 use std::collections::HashSet;
+use std::fs::read_to_string;
 
 pub fn run() -> i32 {
     let file_content = read_to_string("day8/data.txt").unwrap();
@@ -25,7 +25,7 @@ pub fn run() -> i32 {
             }
             "jmp" => i += number,
             "nop" => i += 1,
-            _ => unreachable!()
+            _ => unreachable!(),
         }
     }
 }

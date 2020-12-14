@@ -16,44 +16,40 @@ pub fn find_way() -> usize {
             'S' => y -= value,
             'E' => x += value,
             'W' => x -= value,
-            'L' => {
-                match value {
-                    90 => {
-                        let temp = -y;
-                        y = x;
-                        x = temp;
-                    }
-                    180 => {
-                        x = -x;
-                        y = -y;
-                    }
-                    270 => {
-                        let temp = y;
-                        y = -x;
-                        x = temp;
-                    }
-                    _ => (),
+            'L' => match value {
+                90 => {
+                    let temp = -y;
+                    y = x;
+                    x = temp;
                 }
-            }
-            'R' => {
-                match value {
-                    90 => {
-                        let temp = y;
-                        y = -x;
-                        x = temp;
-                    }
-                    180 => {
-                        x = -x;
-                        y = -y;
-                    }
-                    270 => {
-                        let temp = -y;
-                        y = x;
-                        x = temp;
-                    }
-                    _ => (),
+                180 => {
+                    x = -x;
+                    y = -y;
                 }
-            }
+                270 => {
+                    let temp = y;
+                    y = -x;
+                    x = temp;
+                }
+                _ => (),
+            },
+            'R' => match value {
+                90 => {
+                    let temp = y;
+                    y = -x;
+                    x = temp;
+                }
+                180 => {
+                    x = -x;
+                    y = -y;
+                }
+                270 => {
+                    let temp = -y;
+                    y = x;
+                    x = temp;
+                }
+                _ => (),
+            },
             'F' => {
                 ship_x += value * x;
                 ship_y += value * y;

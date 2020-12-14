@@ -13,8 +13,11 @@ pub fn break_code() -> usize {
         match continuous_sum {
             s if s > weakness => start += 1,
             s if s < weakness => end += 1,
-            s if s == weakness => return lines[start..end].iter().min().unwrap() + lines[start..end].iter().max().unwrap(),
-            _ => unreachable!()
+            s if s == weakness => {
+                return lines[start..end].iter().min().unwrap()
+                    + lines[start..end].iter().max().unwrap()
+            }
+            _ => unreachable!(),
         }
     }
 }

@@ -32,10 +32,28 @@ impl Board {
         for (row_index, row) in self.rows.iter_mut().enumerate() {
             for (cell_index, cell) in row.iter_mut().enumerate() {
                 match cell {
-                    'L' => if Board::count_neighbours(&self.prev_rows.as_ref().unwrap(), row_index as i32, cell_index as i32) == 0 { *cell = '#' },
-                    '#' => if Board::count_neighbours(&self.prev_rows.as_ref().unwrap(), row_index as i32, cell_index as i32) > 4 { *cell = 'L' },
+                    'L' => {
+                        if Board::count_neighbours(
+                            &self.prev_rows.as_ref().unwrap(),
+                            row_index as i32,
+                            cell_index as i32,
+                        ) == 0
+                        {
+                            *cell = '#'
+                        }
+                    }
+                    '#' => {
+                        if Board::count_neighbours(
+                            &self.prev_rows.as_ref().unwrap(),
+                            row_index as i32,
+                            cell_index as i32,
+                        ) > 4
+                        {
+                            *cell = 'L'
+                        }
+                    }
                     '.' => (),
-                    _ => unreachable!()
+                    _ => unreachable!(),
                 }
             }
         }
@@ -44,7 +62,9 @@ impl Board {
     fn check_if_changed(&self, rows: &Vec<Vec<char>>) -> bool {
         for (index_row, row) in rows.iter().enumerate() {
             for (index_cell, _) in row.iter().enumerate() {
-                if self.prev_rows.as_ref().unwrap()[index_row][index_cell] != rows[index_row][index_cell] {
+                if self.prev_rows.as_ref().unwrap()[index_row][index_cell]
+                    != rows[index_row][index_cell]
+                {
                     return true;
                 }
             }
@@ -68,7 +88,11 @@ impl Board {
                     multiplier += 1;
                     row = row_index + multiplier * diff_row;
                     col = cell_index + multiplier * diff_col;
-                    if row < 0 || col < 0 || row as usize >= prev_rows.len() || col as usize >= prev_rows[row as usize].len() {
+                    if row < 0
+                        || col < 0
+                        || row as usize >= prev_rows.len()
+                        || col as usize >= prev_rows[row as usize].len()
+                    {
                         should_continue = true;
                         break;
                     }
@@ -91,5 +115,9 @@ pub fn find_occupied_seats() -> usize {
     lines.pop();
     let mut board = Board::from(lines);
     board.run();
-    board.rows.iter().map(|row| row.iter().filter(|char| **char == '#').count()).sum()
+    board
+        .rows
+        .iter()
+        .map(|row| row.iter().filter(|char| **char == '#').count())
+        .sum()
 }

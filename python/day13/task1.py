@@ -1,7 +1,7 @@
 from os.path import dirname
 
 
-def run():
+def find_bus():
     with open(f'{dirname(__file__)}/data.txt', 'r') as file:
         (timestamp, busses) = file.read().split('\n')[:-1]
         timestamp = int(timestamp)
@@ -16,4 +16,4 @@ def run():
 
 
 if __name__ == '__main__':
-    print(run())
+    print(find_bus())

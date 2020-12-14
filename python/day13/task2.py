@@ -1,7 +1,7 @@
 from os.path import dirname
 
 
-def run():
+def find_bus():
     with open(f'{dirname(__file__)}/data.txt', 'r') as file:
         data = file.read().split('\n')[1].split(',')
         busses = []
@@ -26,4 +26,4 @@ def run():
 
 
 if __name__ == '__main__':
-    print(run())
+    print(find_bus())
